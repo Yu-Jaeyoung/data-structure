@@ -6,4 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(c_language
-        ArrayList.cpp)
+        ArrayList.cpp
+        ArrayList.h
+        main.cpp
+        )

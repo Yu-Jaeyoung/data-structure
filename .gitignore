@@ -1,4 +1,5 @@
 .idea
+*.txt
 
 # Created by https://www.toptal.com/developers/gitignore/api/intellij,clion,c++,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij,clion,c++,java
