@@ -16,3 +16,4 @@ int addListData(ArrayList *pList, int position, element data);
 int removeListData(ArrayList *pList, int position);
 element getListData(ArrayList *pList, int position);
 void deleteList(ArrayList *pList);
+int getListLength(ArrayList *pList);
