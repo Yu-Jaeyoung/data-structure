@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -97,14 +98,22 @@ void iterateLinkedList(LinkedList *pList) {
 
 void concatenateLinkedList(LinkedList *pListA, LinkedList *pListB) {
     LinkedListNode *pNodeA = NULL;
+
+    if(pListA->currentCount == 0){
+        fprintf(stderr,"오류 발생, 연결 실패");
+        exit(0);
+    }
+
+
     if (pListA != NULL && pListB != NULL) {
         pNodeA = pListA->headerNode.pLink;
+
         while (pNodeA != NULL && pNodeA->pLink != NULL) {
             pNodeA = pNodeA->pLink;
         }
         pNodeA->pLink = pListB->headerNode.pLink;
+
         pListB->headerNode.pLink = NULL;
-        //free(pListB);
     }
 }
 
@@ -138,3 +147,4 @@ int main() {
 
     return 0;
 }
+*/
