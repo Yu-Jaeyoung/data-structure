@@ -1,4 +1,3 @@
-/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -32,6 +31,11 @@ int getLinkedListData(LinkedList *pList, int position) {
 
 int addLinkedListData(LinkedList *pList, int position, int data) {
     int i = 0;
+
+    if (pList->currentCount < position) {
+        fprintf(stderr, "오류 발생 프로그램 종료");
+        exit(1);
+    }
 
     LinkedListNode *pNewNode = (LinkedListNode *) malloc(sizeof(LinkedList));
     pNewNode->data = data;
@@ -102,6 +106,38 @@ void iterateLinkedList(LinkedList *pList) {
     printf("노드 개수 : %d\n", count);
 }
 
+int getListLength(LinkedList *pList) {
+    int length = pList->currentCount;
+    return length;
+
+
+    int i = 0, count = -1;
+    LinkedListNode *pCountList = &(pList->headerNode);
+
+    for (; pCountList != NULL; i++) {
+        pCountList = pCountList->pLink;
+        count++;
+    }
+    return count;
+}
+
+void reverseLinkedList(LinkedList *pList) {
+    LinkedListNode *pNode;
+    LinkedListNode *pPrevNode;
+    LinkedListNode *pCurrentNode;
+
+    if (pList != NULL) {
+        pNode = pList->headerNode.pLink;
+        while (pNode != NULL) {
+            pPrevNode = pCurrentNode;
+            pCurrentNode = pNode;
+            pNode = pNode->pLink;
+            pCurrentNode->pLink = pPrevNode;
+        }
+        pList->headerNode.pLink = pCurrentNode;
+    }
+}
+
 int main() {
     LinkedList *pList = NULL;
 
@@ -113,6 +149,12 @@ int main() {
     int value = getLinkedListData(pList, 1);
     printf("위치 : %d, 값 : %d\n", 1, value);
 
+    value = getListLength(pList);
+    printf("자료의 개수 : %d\n", value);
+
+    displayList(pList);
+    printf("\n\n\n");
+    reverseLinkedList(pList);
     displayList(pList);
 
     iterateLinkedList(pList);
@@ -121,4 +163,4 @@ int main() {
     deleteLinkedList(pList);
 
     return 0;
-}*/
+}
