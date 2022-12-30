@@ -199,7 +199,7 @@ PolyList *polySub(PolyList *pListA, PolyList *pListB) {
                 pNodeA = pNodeA->pLink;
                 pNodeB = pNodeB->pLink;
             } else { // 3번 과정
-                coefSum = pNodeB->data.coef;
+                coefSum = -(pNodeB->data.coef);
                 addPolyNodeLast(pReturn, coefSum, degreeB);
                 pNodeB = pNodeB->pLink;
             }
