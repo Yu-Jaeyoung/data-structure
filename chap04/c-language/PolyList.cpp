@@ -172,6 +172,57 @@ PolyList *polyAdd(PolyList *pListA, PolyList *pListB) {
     return pReturn;
 }
 
+PolyList *polySub(PolyList *pListA, PolyList *pListB) {
+    PolyList *pReturn = NULL;
+    LinkedListNode *pNodeA = NULL, *pNodeB = NULL;
+    double coefSum = 0;
+
+    if (pListA != NULL && pListB != NULL) {
+        pReturn = createLinkedList();
+        if (pReturn == NULL) {
+            printf("메모리 할당 오류, PolyAdd()\n");
+            return NULL;
+        }
+
+        pNodeA = pListA->headerNode.pLink;
+        pNodeB = pListB->headerNode.pLink;
+        while (pNodeA != NULL && pNodeB != NULL) {
+            int degreeA = pNodeA->data.degree;
+            int degreeB = pNodeB->data.degree;
+            if (degreeA > degreeB) { // 1번 과정
+                coefSum = pNodeA->data.coef;
+                addPolyNodeLast(pReturn, coefSum, degreeA);
+                pNodeA = pNodeA->pLink;
+            } else if (degreeA == degreeB) { // 2번 과정
+                coefSum = pNodeA->data.coef - pNodeB->data.coef;
+                addPolyNodeLast(pReturn, coefSum, degreeA);
+                pNodeA = pNodeA->pLink;
+                pNodeB = pNodeB->pLink;
+            } else { // 3번 과정
+                coefSum = pNodeB->data.coef;
+                addPolyNodeLast(pReturn, coefSum, degreeB);
+                pNodeB = pNodeB->pLink;
+            }
+        }
+        // 남은 노드 처리
+        while (pNodeA != NULL) {
+            coefSum = pNodeA->data.coef;
+            addPolyNodeLast(pReturn, coefSum, pNodeA->data.degree);
+            pNodeA = pNodeA->pLink;
+        }
+
+        while (pNodeB != NULL) {
+            coefSum = pNodeB->data.coef;
+            addPolyNodeLast(pReturn, -coefSum, pNodeB->data.degree);
+            pNodeB = pNodeB->pLink;
+        }
+    } else {
+        printf("오류, NULL 다항식이 전달됨, PolyAdd()\n");
+    }
+
+    return pReturn;
+}
+
 int main() {
     PolyList *pListA = NULL;
     PolyList *pListB = NULL;
@@ -193,7 +244,7 @@ int main() {
         addPolyNodeLast(pListB, 4, 0);
         displayPolyList(pListB);
 
-        pListC = polyAdd(pListA, pListB);
+        pListC = polySub(pListA, pListB);
         if (pListC != NULL) {
             displayPolyList(pListC);
             deleteLinkedList(pListC);
