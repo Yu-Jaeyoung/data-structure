@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,7 +17,9 @@ char *reverseString(char *pSource) {
             size++;
         }
 
-        /*printf("size: [%d]\n", size); // size 체크 용으로 임의 선언*/
+        */
+/*printf("size: [%d]\n", size); // size 체크 용으로 임의 선언*//*
+
 
         pReturn = (char *) malloc(sizeof(char) * (size + 1));
         memset(pReturn, 0, sizeof(char) * (size + 1));
@@ -42,4 +45,4 @@ int main() {
         free(pszReverse);
     }
     return 0;
-}
+}*/
