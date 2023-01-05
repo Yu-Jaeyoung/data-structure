@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -135,4 +136,4 @@ int main() {
         deleteArrayStack(pStack);
     }
     return 0;
-}
+}*/
