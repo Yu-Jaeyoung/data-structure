@@ -1,3 +1,4 @@
+/*
 #ifndef C_LANGUAGE_LINKEDSTACK_H
 #define C_LANGUAGE_LINKEDSTACK_H
 
@@ -20,3 +21,4 @@ void deleteLinkedStack(LinkedStack *pStack);
 void displayLinkedStack(LinkedStack *pStack);
 
 #endif
+*/

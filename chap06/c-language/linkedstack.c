@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -87,4 +88,4 @@ void displayLinkedStack(LinkedStack *pStack) {
             pNode = pNode->pLink;
         }
     }
-}
+}*/
