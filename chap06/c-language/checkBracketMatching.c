@@ -56,8 +56,8 @@ int main() {
             "{ ( A + B } ) * C * D"
     };
 
-    printf("sizeof(szExpressionStr) : [%d]\n", sizeof(szExpressionStr));
-    printf("sizeof(szExpressionStr): [%d]\n", sizeof(szExpressionStr[0]));
+    // printf("sizeof(szExpressionStr) : [%d]\n", sizeof(szExpressionStr));
+    // printf("sizeof(szExpressionStr): [%d]\n", sizeof(szExpressionStr[0]));
 
     for (i = 0; i < sizeof(szExpressionStr) / sizeof(szExpressionStr[0]); i++) {
         checkResult = checkBracketMatching(szExpressionStr[i]);
