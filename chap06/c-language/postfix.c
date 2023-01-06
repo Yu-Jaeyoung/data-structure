@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include "exprlinkedstack.h"
@@ -84,4 +85,4 @@ int main() {
     free(pExprTokens);
 
     return 0;
-}
+}*/
