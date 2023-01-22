@@ -1,17 +1,8 @@
-/*
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct BinTreeNodeType {
-    char data;
+#include "bintree.h"
 
-    struct BinTreeNodeType *pLeftChild;
-    struct BinTreeNodeType *pRightChild;
-} BinTreeNode;
-
-typedef struct BinTreeType {
-    struct BinTreeNodeType *pRootNode;
-} BinTree;
 
 BinTreeNode *makeNewNodeBT(char data) {
     BinTreeNode *pReturn = (BinTreeNode *) malloc(sizeof(BinTreeNode));
@@ -115,4 +106,4 @@ int main() {
         deleteBinTree(pBinTree);
     }
 
-}*/
+}
