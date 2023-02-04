@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "ArrayList.h"
+#include "arraylist.h"
 
 ArrayList *creatList(int count) {
     if (count <= 0) {
