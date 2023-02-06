@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -8,11 +9,13 @@ int list[MAX_SIZE];
 int sorted[MAX_SIZE];
 int n;
 
+*/
 /*
    i는 정렬된 왼쪽 리스트에 대한 인덱스
    j는 정렬된 오른쪽 리스트에 대한 인덱스
    k는 정렬된 리스트에 대한 인덱스
-*/
+*//*
+
 
 void merge(int list[], int left, int mid, int right) {
     int i, j, k, l;
@@ -20,7 +23,9 @@ void merge(int list[], int left, int mid, int right) {
     j = mid + 1;
     k = left;
 
-    /* 분할 정렬된 list의 합병 */
+    */
+/* 분할 정렬된 list의 합병 *//*
+
     while (i <= mid && j <= right) {
         if (list[i] <= list[j]) {
             sorted[k++] = list[i++];
@@ -70,4 +75,4 @@ int main(void) {
     }
     printf("\n");
     return 0;
-}
+}*/
