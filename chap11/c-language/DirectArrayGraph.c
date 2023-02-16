@@ -6,12 +6,12 @@
 typedef struct DirectArrayGraphType {
     int nodeCount; // 노드 개수
     int **ppEdge; // 간선 저장을 위한 2차원 array
-} ArrayGraph;
+} DirectArrayGraph;
 
-ArrayGraph *createDirectArrayGraph(int nodeCount) {
+DirectArrayGraph *createDirectArrayGraph(int nodeCount) {
     int i = 0;
-    ArrayGraph *pReturn = NULL;
-    pReturn = (ArrayGraph *) malloc(sizeof(ArrayGraph));
+    DirectArrayGraph *pReturn = NULL;
+    pReturn = (DirectArrayGraph *) malloc(sizeof(DirectArrayGraph));
     if (pReturn == NULL) {
         return NULL;
     }
@@ -30,7 +30,7 @@ ArrayGraph *createDirectArrayGraph(int nodeCount) {
     return pReturn;
 }
 
-int checkVertexValid(ArrayGraph *pGraph, int node) {
+int checkVertexValid(DirectArrayGraph *pGraph, int node) {
     if (pGraph != NULL && node < pGraph->nodeCount && node >= 0) {
         return 1;
     } else {
@@ -38,7 +38,7 @@ int checkVertexValid(ArrayGraph *pGraph, int node) {
     }
 }
 
-int addEdgeDAG(ArrayGraph *pGraph, int fromNode, int toNode) {
+int addEdgeDAG(DirectArrayGraph *pGraph, int fromNode, int toNode) {
     int ret = 0;
 
     if (pGraph != NULL && checkVertexValid(pGraph, fromNode) && checkVertexValid(pGraph, toNode)) {
@@ -49,7 +49,7 @@ int addEdgeDAG(ArrayGraph *pGraph, int fromNode, int toNode) {
     return ret;
 }
 
-int removeEdgeDAG(ArrayGraph *pGraph, int fromNode, int toNode) {
+int removeEdgeDAG(DirectArrayGraph *pGraph, int fromNode, int toNode) {
     int ret = 0;
     if (pGraph != NULL && checkVertexValid(pGraph, fromNode) && checkVertexValid(pGraph, toNode)) {
         pGraph->ppEdge[fromNode][toNode] = 0;
@@ -60,7 +60,7 @@ int removeEdgeDAG(ArrayGraph *pGraph, int fromNode, int toNode) {
 }
 
 
-int getEdgeDAG(ArrayGraph *pGraph, int fromNode, int toNode) {
+int getEdgeDAG(DirectArrayGraph *pGraph, int fromNode, int toNode) {
     int ret = 0;
     if (pGraph != NULL && checkVertexValid(pGraph, fromNode) && checkVertexValid(pGraph, toNode)) {
         ret = pGraph->ppEdge[fromNode][toNode];
@@ -68,7 +68,7 @@ int getEdgeDAG(ArrayGraph *pGraph, int fromNode, int toNode) {
     return ret;
 }
 
-void displayGraphDAG(ArrayGraph *pGraph) {
+void displayGraphDAG(DirectArrayGraph *pGraph) {
     int i, j;
     int count = 0;
     if (pGraph != NULL) {
@@ -82,7 +82,7 @@ void displayGraphDAG(ArrayGraph *pGraph) {
     }
 }
 
-void deleteGraphDAG(ArrayGraph *pGraph) {
+void deleteGraphDAG(DirectArrayGraph *pGraph) {
     int i = 0;
     if (pGraph != NULL) {
         for (i = 0; i < pGraph->nodeCount; i++) {
@@ -95,7 +95,7 @@ void deleteGraphDAG(ArrayGraph *pGraph) {
 
 int main() {
     int nodeCount = 6;
-    ArrayGraph *pG2 = createDirectArrayGraph(nodeCount);
+    DirectArrayGraph *pG2 = createDirectArrayGraph(nodeCount);
     if (pG2 != NULL) {
         addEdgeDAG(pG2, 0, 1);
         addEdgeDAG(pG2, 1, 2);
