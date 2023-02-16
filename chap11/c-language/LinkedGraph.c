@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -234,4 +235,4 @@ void deleteGraphLG(LinkedGraph *pGraph) {
         }
         free(pGraph);
     }
-}
+}*/
