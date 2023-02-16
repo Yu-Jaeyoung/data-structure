@@ -1,16 +1,10 @@
-/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "ArrayGraph.h"
 
 #define ARRAY_GRAPH_TYPE_DIRECT 0
 #define ARRAY_GRAPH_TYPE_UNDIRECT 1
-
-typedef struct ArrayGraphType {
-    int graphType; // 그래프의 종류 : 방향 그래프, 무방향 그래프
-    int nodeCount; // 노드 개수
-    int **ppEdge; // 간선 저장을 위한 2차원 array
-} ArrayGraph;
 
 ArrayGraph *createArrayGraph(int graphType, int nodeCount) {
     int i = 0;
@@ -117,4 +111,4 @@ void deleteGraphAG(ArrayGraph *pGraph) {
         free(pGraph->ppEdge);
         free(pGraph);
     }
-}*/
+}
