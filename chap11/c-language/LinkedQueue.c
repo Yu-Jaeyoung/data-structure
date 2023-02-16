@@ -21,7 +21,7 @@ LinkedQueue *createLinkedQueue() {
     return pReturn;
 }
 
-int enqueueLQ(LinkedQueue *pQueue, char data) {
+int enqueueLQ(LinkedQueue *pQueue, int data) {
     int ret = 0;
     LinkedQueueNode *pNode = NULL;
 
