@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -83,4 +84,4 @@ int main() {
     };
     shortest_path(&g, 0);
     return 0;
-}
+}*/
