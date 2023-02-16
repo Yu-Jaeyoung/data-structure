@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -116,4 +117,4 @@ void deleteGraphAG(ArrayGraph *pGraph) {
         free(pGraph->ppEdge);
         free(pGraph);
     }
-}
+}*/
