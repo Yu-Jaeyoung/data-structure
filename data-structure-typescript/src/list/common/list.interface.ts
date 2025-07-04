@@ -23,5 +23,5 @@ export interface List<T> {
 
   clear (): void;
 
-  toArray (): T[];
+  printAll (): void;
 }
