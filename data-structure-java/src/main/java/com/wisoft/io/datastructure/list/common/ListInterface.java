@@ -1,4 +1,4 @@
-package com.wisoft.io.datastructure.common;
+package com.wisoft.io.datastructure.list.common;
 
 public interface ListInterface<T> {
     void add(T element);
