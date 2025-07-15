@@ -1,15 +1,20 @@
 {
   "name": "data-structure-typescript",
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
+  "module": "src/index.ts",
+  "type": "module",
   "scripts": {
-    "build": "tsc"
+    "start": "bun run src/index.ts",
+    "dev": "bun --watch src/index.ts",
+    "build": "bun build src/index.ts --outdir ./dist --target=bun",
+    "test": "bun test",
+    "lint": "bun biome lint --write ./src",
+    "format": "bun biome format --write ./src"
   },
-  "dependencies": {},
   "devDependencies": {
-    "typescript": "^5.5.3",
-    "@types/bun": "latest"
+    "@biomejs/biome": "^2.1.1",
+    "@types/bun": "latest",
+    "typescript": "^5.5.3"
   },
   "private": true
 }
