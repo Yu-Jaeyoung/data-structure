@@ -1,71 +1,81 @@
-import { List } from "./common/list.interface";
+import type { List } from "./common/list.interface";
 
 export class ArrayList<T> implements List<T> {
-  private elements: T[] = [];
+  private elements: Array<T>;
   private itemCount: number = 0;
 
-  constructor (capacity: number = 10) {
+  constructor(capacity: number = 10) {
     this.elements = new Array<T>(capacity);
     this.itemCount = 0;
   }
 
-  add (element: T): void;
-  add (
-    index: number,
-    element: T,
-  ): void;
-  add (
-    indexOrElement: T | number,
-    element?: T,
-  ): void {
-    if (typeof indexOrElement === "number" && typeof element !== undefined) {
-      this.elements.splice(indexOrElement, 0, element);
+  add(element: T): void;
+  add(index: number, element: T): void;
+
+  add(indexOrElement: T | number, element?: T): void {
+    if (typeof indexOrElement === "number") {
+      const index: number = indexOrElement;
+
+      if (element === undefined) {
+        throw new Error("Element must be provided when an index is specified.");
+      }
+
+      this.elements.splice(index, 0, element);
       this.itemCount++;
-    } else if (indexOrElement !== null && element === undefined) {
-      this.elements.push(indexOrElement);
-      this.itemCount++;
+      return;
     }
+
+    this.elements[this.itemCount] = indexOrElement;
+    this.itemCount++;
   }
 
-  remove (index: number) {
-    // TODO: 잘못된 접근에 대한 처리 로직 필요
-    this.elements.splice(index, 1);
+  remove(index: number): T {
+    if (index < 0 || index >= this.itemCount) {
+      throw new Error("Index out of bounds.");
+    }
+
+    this.itemCount--;
+    return this.elements.splice(index, 1)[0];
   }
 
-  get (index: number): T {
+  get(index: number): T {
+    if (index < 0 || index >= this.itemCount) {
+      throw new Error("Index out of bounds.");
+    }
+
     return this.elements[index];
   }
 
-  set (
-    index: number,
-    element: T,
-  ): T {
-    return this.elements[index] = element;
+  set(index: number, element: T): T {
+    if (index < 0 || index >= this.itemCount) {
+      throw new Error("Index out of bounds.");
+    }
+
+    this.elements[index] = element;
+
+    return this.elements[index];
   }
 
-  indexOf (element: T): number {
-    return this.elements.findIndex(element=>element === element);
+  indexOf(element: T): number {
+    return this.elements.indexOf(element);
   }
 
-  clear (): void {
+  clear(): void {
     this.elements = [];
     this.itemCount = 0;
   }
 
-  isEmpty (): boolean {
+  isEmpty(): boolean {
     return this.itemCount === 0;
   }
 
-  size (): number {
+  sizeOf(): number {
     return this.itemCount;
   }
 
-  printAll () {
-    let valueArray = [];
-    this.elements.map((value: T)=>{
-      valueArray.push(value);
-    });
+  printAll(): void {
+    const elementsToPrint: T[] = this.elements.slice(0, this.itemCount);
 
-    console.log(valueArray);
+    console.log(elementsToPrint);
   }
 }

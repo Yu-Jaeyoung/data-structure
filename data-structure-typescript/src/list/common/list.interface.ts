@@ -1,27 +1,21 @@
 export interface List<T> {
-  add (element: T): void;
+  add(element: T): void;
 
-  add (
-    index: number,
-    element: T,
-  ): void;
+  add(index: number, element: T): void;
 
-  remove (index: number): T;
+  remove(index: number): T;
 
-  get (index: number): T;
+  get(index: number): T;
 
-  set (
-    index: number,
-    element: T,
-  ): T;
+  set(index: number, element: T): T;
 
-  indexOf (element: T): number;
+  indexOf(element: T): number;
 
-  size (): number;
+  sizeOf(): number;
 
-  isEmpty (): boolean;
+  isEmpty(): boolean;
 
-  clear (): void;
+  clear(): void;
 
-  printAll (): void;
+  printAll(): void;
 }
