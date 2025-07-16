@@ -12,21 +12,23 @@ export class ArrayList<T> implements List<T> {
   add(element: T): void;
   add(index: number, element: T): void;
 
-  add(indexOrElement: T | number, element?: T): void {
-    if (typeof indexOrElement === "number") {
-      const index: number = indexOrElement;
+  add(...args: [T] | [number, T]): void {
+    if (args.length !== 1 && args.length !== 2) {
+      throw new Error("Invalid number of arguments for add method.");
+    }
 
-      if (element === undefined) {
-        throw new Error("Element must be provided when an index is specified.");
-      }
-
+    if (args.length === 2) {
+      const [index, element] = args;
       this.elements.splice(index, 0, element);
       this.itemCount++;
       return;
     }
 
-    this.elements[this.itemCount] = indexOrElement;
-    this.itemCount++;
+    if (args.length === 1) {
+      const [element] = args;
+      this.elements[this.itemCount] = element;
+      this.itemCount++;
+    }
   }
 
   remove(index: number): T {
