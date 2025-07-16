@@ -59,6 +59,10 @@ export class ArrayList<T> implements List<T> {
   }
 
   indexOf(element: T): number {
+    if (this.itemCount === 0) {
+      return -1;
+    }
+
     return this.elements.indexOf(element);
   }
 
