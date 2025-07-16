@@ -1,13 +1,15 @@
-import { beforeEach, describe, expect, it } from "bun:test";
+import { describe, expect, it } from "bun:test";
 import { ArrayList } from "@/list/array-list";
 
 const createEmptyList = () => new ArrayList<number>();
 
 const createPreFilledList = () => {
   const list = new ArrayList<number>();
+
   list.add(10);
   list.add(20);
   list.add(30);
+
   return list;
 };
 
@@ -41,7 +43,7 @@ describe("ArrayList", () => {
       expect(list.get(1)).toBe(20);
     });
 
-    it("should be empty after removed last element", () => {
+    it("should be empty after an element is added and then removed", () => {
       const list = createEmptyList();
 
       list.add(10);
@@ -69,26 +71,36 @@ describe("ArrayList", () => {
       expect(list.sizeOf()).toBe(2);
     });
 
-    it("should remove first element when remove request index is 0", () => {
+    it("should correctly update the list when removing the first element", () => {
       const list = createPreFilledList();
 
       const removed = list.remove(0);
 
       expect(removed).toBe(10);
-      expect(list.sizeOf()).toBe(2);
       expect(list.get(0)).toBe(20);
+      expect(list.sizeOf()).toBe(2);
+    });
+
+    it("should set the element at a specific index", () => {
+      const list = createPreFilledList();
+
+      list.set(1, 99);
+
+      expect(list.get(1)).toBe(99);
+      expect(list.get(0)).toBe(10);
     });
 
     describe("when removing the last element", () => {
       it("should return the correct removed element", () => {
-        const list: ArrayList<number> = createPreFilledList();
+        const list = createPreFilledList();
+
         const removedElement: number = list.remove(list.sizeOf() - 1);
 
         expect(removedElement).toBe(30);
       });
 
       it("should decrease the size by one", () => {
-        const list: ArrayList<number> = createPreFilledList();
+        const list = createPreFilledList();
 
         list.remove(list.sizeOf() - 1);
 
@@ -105,19 +117,41 @@ describe("ArrayList", () => {
     });
 
     it("should throw an error when using a negative index", () => {
-      const list = createEmptyList();
-
-      list.add(10);
+      const list = createPreFilledList();
 
       expect(() => list.remove(-1)).toThrow("Index out of bounds.");
     });
 
-    it("should throw an error when getting with an out-of-bounds index", () => {
+    it("should throw an error when getting with an out-of-bounds index on a non-empty list", () => {
       const list = createEmptyList();
 
       list.add(10);
 
       expect(() => list.get(1)).toThrow("Index out of bounds.");
+    });
+
+    it("should throw an error when setting on an empty list", () => {
+      const list = createEmptyList();
+
+      expect(() => list.set(0, 10)).toThrow("Index out of bounds.");
+    });
+
+    it("should throw an error when setting with a negative index", () => {
+      const list = createPreFilledList();
+
+      expect(() => list.set(-1, 99)).toThrow("Index out of bounds.");
+    });
+  });
+
+  describe("isEmpty", () => {
+    it("should return true for a newly created list", () => {
+      const list = createEmptyList();
+      expect(list.isEmpty()).toBe(true);
+    });
+
+    it("should return false for a list with elements", () => {
+      const list = createPreFilledList();
+      expect(list.isEmpty()).toBe(false);
     });
   });
 });
