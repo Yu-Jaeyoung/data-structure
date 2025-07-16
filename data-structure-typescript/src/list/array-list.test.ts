@@ -94,7 +94,7 @@ describe("ArrayList", () => {
       it("should return the correct removed element", () => {
         const list = createPreFilledList();
 
-        const removedElement: number = list.remove(list.sizeOf() - 1);
+        const removedElement = list.remove(list.sizeOf() - 1);
 
         expect(removedElement).toBe(30);
       });
@@ -152,6 +152,56 @@ describe("ArrayList", () => {
     it("should return false for a list with elements", () => {
       const list = createPreFilledList();
       expect(list.isEmpty()).toBe(false);
+    });
+  });
+
+  describe("indexOf", () => {
+    it("should return the correct index of the list", () => {
+      const list = createPreFilledList();
+
+      expect(list.indexOf(10)).toBe(0);
+    });
+
+    it("should return -1 with un-exist element", () => {
+      const list = createPreFilledList();
+
+      expect(list.indexOf(40)).toBe(-1);
+    });
+
+    it("should return -1 when list is empty", () => {
+      const list = createEmptyList();
+
+      expect(list.indexOf(10)).toBe(-1);
+    });
+
+    it("should return the first index when duplicates exist", () => {
+      const list = createEmptyList();
+
+      list.add(10);
+      list.add(20);
+      list.add(10);
+
+      expect(list.indexOf(10)).toBe(0);
+    });
+  });
+
+  describe("clear", () => {
+    it("should clear the pre filled list", () => {
+      const list = createPreFilledList();
+
+      list.clear();
+
+      expect(list.isEmpty()).toBe(true);
+      expect(list.sizeOf()).toBe(0);
+    });
+
+    it("should not throw an error when clearing an empty list", () => {
+      const list = createEmptyList();
+
+      list.clear();
+
+      expect(list.isEmpty()).toBe(true);
+      expect(list.sizeOf()).toBe(0);
     });
   });
 });
